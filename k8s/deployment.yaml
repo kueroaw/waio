@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deaoem
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deaoem
+  template:
+    metadata:
+      labels:
+        app: deaoem
+    spec:
+      containers:
+      - image: okteto.dev/deaoem:latest
+        name: deaoem
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/S-html.zip"
+        - name: Vless_UUID
+          value: "38cd350a-d8f7-43c1-ae25-29b5852c2c58"
+        - name: Vless_Path
+          value: "/vl22bb"
+        - name: Vmess_UUID
+          value: "38cd350a-d8f7-43c1-ae25-29b5852c2c58"
+        - name: Vmess_Path
+          value: "/vm33cc"
+        - name: Share_Path
+          value: "/v2link"
